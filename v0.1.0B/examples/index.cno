@@ -1,0 +1,17 @@
+import Liga from "lib.cnl"
+$led = new Liga(@8)
+&{
+	$led.ligar()
+	sleep(500)
+	$led.desligar()
+	sleep(500)
+}
+&lib {
+	req writable = writable()
+	req high = func ($p) {
+		$p = true
+	}
+	req low = func ($p) {
+		$p = false
+	}
+}

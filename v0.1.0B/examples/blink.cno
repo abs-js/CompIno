@@ -1,0 +1,5 @@
+# pin 7 stays on
+writable(@7)
+&{
+	@7 = true
+}

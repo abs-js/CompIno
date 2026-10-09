@@ -1,0 +1,15 @@
+# CompIno library. No @ pins, no & loop, no direct board access.
+class Liga {
+	func _main ($pin) {
+		_pin = $pin
+		request writable $pin
+	}
+	Main _main
+	_ligar () {
+		request _pin => high()
+	}
+	_desligar () {
+		request _pin => low()
+	}
+}
+export Liga

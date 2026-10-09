@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Learn CompIno</title>
+  <style>
+    :root { color-scheme: light dark; --ink: #1c2430; --muted: #5c6b7a; --line: #d7dee6; --bg: #f6f8fb; --card: #fff; --accent: #0f6b4c; }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink: #e8eef5; --muted: #a9b6c4; --line: #2c3846; --bg: #12181f; --card: #1b242e; --accent: #7dcea0; }
+    }
+    body { margin: 0; font: 17px/1.55 Georgia, "Iowan Old Style", serif; color: var(--ink); background: var(--bg); }
+    header, main { max-width: 760px; margin: 0 auto; padding: 28px 20px; }
+    header { border-bottom: 1px solid var(--line); }
+    h1 { font-size: 2.2rem; margin: 0 0 8px; }
+    h2 { margin-top: 2rem; font-size: 1.4rem; }
+    p, li { color: var(--ink); }
+    .muted { color: var(--muted); }
+    code, pre { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.92rem; }
+    pre { background: var(--card); border: 1px solid var(--line); padding: 14px 16px; overflow: auto; border-radius: 10px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Learn CompIno</h1>
+    <p class="muted">Version 0.1.0-beta.0. CompIno writes Arduino sketches so the board program can stay short.</p>
+  </header>
+  <main>
+    <h2>1. Run it</h2>
+    <pre>npx compino@beta blink.cno</pre>
+    <p>That writes <code>blink.ino</code>. Open the <code>.ino</code> file in the Arduino IDE and upload it.</p>
+
+    <h2>2. A whole sketch</h2>
+    <p>Lines before <code>&{ }</code> run once. Lines inside run forever.</p>
+    <pre>writable(@7)
+&{
+  @7 = true
+  sleep(500)
+  @7 = false
+  sleep(500)
+}</pre>
+
+    <h2>3. Names and pins</h2>
+    <ul>
+      <li><code>$name</code> is a variable.</li>
+      <li><code>@7</code> is digital pin 7. <code>writable(@7)</code> makes it an output.</li>
+      <li><code>~5</code> is analog pin 5. A read is 0 to 1023.</li>
+      <li><code>serial("hello")</code> prints a line.</li>
+    </ul>
+
+    <h2>4. Choices and loops</h2>
+    <pre>if (~5 > 500) {
+  @7 = true
+} else {
+  @7 = false
+}</pre>
+    <p>Use <code>and</code>, <code>or</code>, <code>xor</code>, and <code>!</code>. <code>while (condition) { }</code> repeats a block.</p>
+
+    <h2>5. Functions and classes</h2>
+    <pre>func somar ($a, $b) {
+  return $a + $b
+}
+
+class Algo {
+  _texto = "hello"
+  func _main ($coisa) {
+    _algo = $coisa
+  }
+  Main _main
+}</pre>
+    <p>Outside the class, <code>_texto</code> is used as <code>.texto</code>.</p>
+
+    <h2>6. Flags</h2>
+    <ul>
+      <li><code>-h</code> help</li>
+      <li><code>-v</code> version</li>
+      <li><code>-d</code> detailed transpile log</li>
+      <li><code>-l</code> open this page</li>
+    </ul>
+    <p>Full reference: <code>docs/LANGUAGE.md</code> in the package.</p>
+  </main>
+</body>
+</html>

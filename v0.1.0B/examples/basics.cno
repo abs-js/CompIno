@@ -1,0 +1,18 @@
+# variables, functions, and serial output
+$num = 10
+$texto = "hello"
+$bool = True
+$soma = $num + 10
+$array = [$num, $soma, 30]
+
+func somar ($a, $b) {
+	return $a + $b
+}
+
+$soma = somar(1, 10)
+
+&{
+	serial($texto)
+	serial($soma)
+	sleep(1000)
+}

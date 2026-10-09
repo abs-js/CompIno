@@ -1,0 +1,10 @@
+import Servo from "Servo.h"
+$servo = new Servo(@9)
+&{
+	sleep(2000)
+	$servo.write(10)
+	sleep(2000)
+	$servo.write(180)
+	sleep(2000)
+	$servo.write(0)
+}
