@@ -1,0 +1,18 @@
+# Variables, a function, and serial output.
+$num = 10
+$text = "hello"
+$flag = True
+$sum = $num + 10
+$values = [$num, $sum, 30]
+
+func add ($a, $b) {
+  return $a + $b
+}
+
+$sum = add(1, 10)
+
+&{
+  serial($text)
+  serial($sum)
+  sleep(1000)
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Learn CompIno</title>
+  <style>
+    :root { color-scheme: light dark; --ink: #1c2430; --muted: #5c6b7a; --line: #d7dee6; --bg: #f6f8fb; --card: #fff; --accent: #0f6b4c; }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink: #e8eef5; --muted: #a9b6c4; --line: #2c3846; --bg: #12181f; --card: #1b242e; --accent: #7dcea0; }
+    }
+    body { margin: 0; font: 17px/1.55 Georgia, serif; color: var(--ink); background: var(--bg); }
+    header, main { max-width: 760px; margin: 0 auto; padding: 28px 20px; }
+    h1 { margin: 0 0 8px; }
+    pre { background: var(--card); border: 1px solid var(--line); padding: 14px; overflow: auto; border-radius: 10px; }
+    code, pre { font-family: ui-monospace, monospace; font-size: 0.92rem; }
+    .muted { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Learn CompIno</h1>
+    <p class="muted">Version 0.1.1-beta.0. The generated sketch keeps only what the program uses.</p>
+  </header>
+  <main>
+    <h2>Run</h2>
+    <pre>npx compino@beta blink.cno</pre>
+    <p>Open the written <code>.ino</code> in the Arduino IDE and upload it.</p>
+    <h2>Blink</h2>
+    <pre>writable(@7)
+&{
+  @7 = true
+}</pre>
+    <p>That becomes <code>pinMode(7, OUTPUT)</code> and <code>digitalWrite(7, HIGH)</code>.</p>
+    <h2>Names</h2>
+    <ul>
+      <li><code>$text = "hello"</code> is a variable.</li>
+      <li><code>@7</code> is a digital pin. <code>~5</code> is an analog pin.</li>
+      <li><code>serial("hello")</code> prints a line. <code>sleep(500)</code> waits.</li>
+    </ul>
+    <h2>A library</h2>
+    <pre>import Switch from "lib.cnl"
+$led = new Switch(@8)
+&{
+  $led.turnOn()
+  sleep(500)
+  $led.turnOff()
+  sleep(500)
+}</pre>
+    <p>Errors are numbered E001–E015. CompIno prints all of them and skips the <code>.ino</code> until they are fixed.</p>
+  </main>
+</body>
+</html>

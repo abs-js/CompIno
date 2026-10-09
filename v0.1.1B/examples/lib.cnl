@@ -1,0 +1,15 @@
+# CompIno library. No pin marks, no loop block, no direct board access.
+class Switch {
+  func _main ($pin) {
+    _pin = $pin
+    request writable $pin
+  }
+  Main _main
+  _turnOn () {
+    request _pin => high()
+  }
+  _turnOff () {
+    request _pin => low()
+  }
+}
+export Switch

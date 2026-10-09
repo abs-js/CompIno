@@ -1,0 +1,17 @@
+import Switch from "lib.cnl"
+$led = new Switch(@8)
+&{
+  $led.turnOn()
+  sleep(500)
+  $led.turnOff()
+  sleep(500)
+}
+&lib {
+  req writable = writable()
+  req high = func ($p) {
+    $p = true
+  }
+  req low = func ($p) {
+    $p = false
+  }
+}
